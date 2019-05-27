@@ -4,6 +4,7 @@ main() {
     case $1 in 
         begin) begin;;
         update) update;;
+        help) help;;
     esac
 }
 
@@ -85,6 +86,18 @@ update() {
         echo ---------------------
         git push origin $current_branch
     fi
+}
+
+help () {
+    echo "Available commands:
+
+begin 
+
+- will add new dir at current location along with git init, README, and .gitignore and make an initial commit to supplied repo
+
+update
+
+- will stage all changes, commit these with given message, give user option to push or not"
 }
 
 main "$@"

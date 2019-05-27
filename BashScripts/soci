@@ -77,7 +77,6 @@ update() {
     echo -------------------------
     git commit -m "$commit_message"
 
-    git log
     echo ---------------------
     echo " Pushing changes"
     echo ---------------------

@@ -65,7 +65,7 @@ update() {
     git add .
     git status
 
-    get current branch
+    #get current branch
     current_branch=$(git branch | grep \* | cut -d ' ' -f2)
     echo -------------------------
     echo " Current Branch: $current_branch"

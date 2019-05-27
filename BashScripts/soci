@@ -17,7 +17,11 @@ begin() {
     > .gitingnore
 
     #join to repo
-
+    read -p "Enter Remote Repo Address: " repo_address
+    git remote add origin $repo_address
+    git add .
+    git commit -m "Initial Commit" 
+    git push -u origin master
 }
 
 main "$@"

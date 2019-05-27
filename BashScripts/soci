@@ -83,7 +83,7 @@ update() {
         echo ---------------------
         echo " Pushing changes"
         echo ---------------------
-        git push
+        git push origin $current_branch
     fi
 }
 

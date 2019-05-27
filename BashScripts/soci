@@ -77,10 +77,14 @@ update() {
     echo -------------------------
     git commit -m "$commit_message"
 
-    echo ---------------------
-    echo " Pushing changes"
-    echo ---------------------
-    git push
+    read -p "Do you wish to 'git push'? y/n" push_decision
+    if [ push_decision == y]
+    then
+        echo ---------------------
+        echo " Pushing changes"
+        echo ---------------------
+        git push
+    fi
 }
 
 main "$@"

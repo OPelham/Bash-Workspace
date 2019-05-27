@@ -1,0 +1,23 @@
+#!/bin/bash
+
+main() {
+    case begin in 
+        $1) begin;;
+    esac
+}
+
+#Start new repo, connect to remote
+begin() {
+    #set up dir
+    read -p "Enter Repo Name: " repo_name
+    mkdir $repo_name
+    cd $repo_name
+    git init
+    > README.md
+    > .gitingnore
+
+    #join to repo
+
+}
+
+main "$@"

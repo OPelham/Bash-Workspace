@@ -1,8 +1,9 @@
 #!/bin/bash
 
 main() {
-    case begin in 
-        $1) begin;;
+    case $1 in 
+        begin) begin;;
+        update) update;;
     esac
 }
 
@@ -10,18 +11,74 @@ main() {
 begin() {
     #set up dir
     read -p "Enter Repo Name: " repo_name
+
+    echo -------------------
+    echo "  Adding directory"
+    echo -------------------
     mkdir $repo_name
+
     cd $repo_name
+
+    echo -------------------
+    echo      git init
+    echo -------------------
     git init
+
+    echo -------------------
+    echo "   Adding README"
+    echo -------------------
     > README.md
+
+    echo -------------------
+    echo " Adding .gitignore"
+    echo -------------------
     > .gitingnore
 
     #join to repo
     read -p "Enter Remote Repo Address: " repo_address
+    echo ----------------------
+    echo " git remote add origin"
+    echo ----------------------
     git remote add origin $repo_address
+
+    echo -------------------
+    echo Staging all changes
+    echo -------------------
     git add .
+
+    echo -----------------------
+    echo " Making initial commit"
+    echo -----------------------
     git commit -m "Initial Commit" 
+
+    echo -------------------------
+    echo git push -u origin master
+    echo -------------------------
     git push -u origin master
+}
+
+update() {
+    git status
+    echo -------------------
+    echo Staging all changes
+    echo -------------------
+    git add .
+    git status
+
+    get current branch
+    current_branch=$(git branch | grep \* | cut -d ' ' -f2)
+    echo -------------------------
+    echo " Current Branch: $current_branch"
+    echo -------------------------
+
+    read -p "Enter commit message: " commit_message
+    echo -------------------------
+    echo "   Committing changes"
+    echo -------------------------
+    git commit -m "$commit_message"
+
+    git log
+    
 }
 
 main "$@"

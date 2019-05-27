@@ -77,8 +77,8 @@ update() {
     echo -------------------------
     git commit -m "$commit_message"
 
-    read -p "Do you wish to 'git push'? y/n" push_decision
-    if [ push_decision == y]
+    read -p "Do you wish to 'git push'? y/n: " push_decision
+    if [ $push_decision == y]
     then
         echo ---------------------
         echo " Pushing changes"
